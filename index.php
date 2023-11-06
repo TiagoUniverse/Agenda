@@ -11,7 +11,11 @@ if ($data === null) {
     echo "Erro ao decodificar o JSON.";
 } else {
     // Agora, a variável $data contém os dados do JSON como um array PHP
-    print_r($data); // Você pode imprimir o array para verificar os dados
+    print_r($data);
+
+    echo '<script>';
+    echo 'var jsonData = ' . json_encode($data) . ';';
+    echo '</script>';
 }
 
 ?>
@@ -41,7 +45,7 @@ if ($data === null) {
           list: 'Lista'
         },
         locale: 'pt-br',
-        events: '/lib/JSON/dados.json'
+        events: jsonData
       });
       calendar.render();
     });
