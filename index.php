@@ -8,14 +8,14 @@ $data = json_decode($jsonData, true); // O segundo argumento `true` converte o J
 
 // Verificar se a decodificação foi bem-sucedida
 if ($data === null) {
-    echo "Erro ao decodificar o JSON.";
+  echo "Erro ao decodificar o JSON.";
 } else {
-    // Agora, a variável $data contém os dados do JSON como um array PHP
-    print_r($data);
+  // Agora, a variável $data contém os dados do JSON como um array PHP
+  // print_r($data);
 
-    echo '<script>';
-    echo 'var jsonData = ' . json_encode($data) . ';';
-    echo '</script>';
+  echo '<script>';
+  echo 'var jsonData = ' . json_encode($data) . ';';
+  echo '</script>';
 }
 
 ?>
@@ -27,8 +27,7 @@ if ($data === null) {
   <meta charset='utf-8' />
   <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.9/index.global.min.js'></script>
   <script>
-
-    document.addEventListener('DOMContentLoaded', function () {
+    document.addEventListener('DOMContentLoaded', function() {
       var calendarEl = document.getElementById('calendar');
       var calendar = new FullCalendar.Calendar(calendarEl, {
         initialView: 'dayGridMonth',
@@ -45,11 +44,13 @@ if ($data === null) {
           list: 'Lista'
         },
         locale: 'pt-br',
-        events: jsonData
+        events: jsonData,
+        eventClick: function(info) {
+          window.location.href=`https://www.google.com.br/${info.event.id}`
+        }
       });
       calendar.render();
     });
-
   </script>
 </head>
 
