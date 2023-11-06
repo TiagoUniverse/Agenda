@@ -1,3 +1,21 @@
+<?php
+
+// Ler o conteúdo do arquivo JSON
+$jsonData = file_get_contents('./lib/JSON/dados.json');
+
+// Decodificar o JSON em um array PHP
+$data = json_decode($jsonData, true); // O segundo argumento `true` converte o JSON em um array associativo
+
+// Verificar se a decodificação foi bem-sucedida
+if ($data === null) {
+    echo "Erro ao decodificar o JSON.";
+} else {
+    // Agora, a variável $data contém os dados do JSON como um array PHP
+    print_r($data); // Você pode imprimir o array para verificar os dados
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang='en'>
 
@@ -23,20 +41,7 @@
           list: 'Lista'
         },
         locale: 'pt-br',
-        dateClick: function (info) {
-          alert('Clicked on: ' + info.dateStr);
-          alert('Coordinates: ' + info.jsEvent.pageX + ',' + info.jsEvent.pageY);
-          alert('Current view: ' + info.view.type);
-          // change the day's background color just for fun
-          info.dayEl.style.backgroundColor = 'red';
-        },
-        events: [
-          { // this object will be "parsed" into an Event Object
-            title: 'The Title', // a property!
-            start: '2023-11-01', // a property!
-            end: '2023-11-02' // a property! ** see important note below about 'end' **
-          }
-        ]
+        events: '/lib/JSON/dados.json'
       });
       calendar.render();
     });
