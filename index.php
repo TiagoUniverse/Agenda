@@ -46,7 +46,7 @@ if ($data === null) {
         locale: 'pt-br',
         events: jsonData,
         eventClick: function(info) {
-          window.location.href=`https://www.google.com.br/${info.event.id}`
+          window.location.href=`https://www.sitequalquer.com.br/evento/${info.event.id}`
         }
       });
       calendar.render();
